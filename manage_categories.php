@@ -5,7 +5,7 @@ $cat_name='';
 $msg='';
 if(isset($_GET['id']) && $_GET['id']!=''){
     $id=get_safe_value($conn,$_GET['id']);
-    $res=mysqli_query($conn,"select * from categories where cat_name='$cat_name'");
+    $res=mysqli_query($conn,"select * from categories where id='$id'");
     $check=mysqli_num_rows($res);
     if($check>0){
         $row=mysqli_fetch_assoc($res);
@@ -55,17 +55,17 @@ if(isset($_POST['submit'])){
                      <div class="card">
                         <div class="card-header"><strong>Categories</strong><small> Form</small></div>
                         <form method="post">
-					<div class="card-body card-block">
-						<div class="form-in">
-							<label for="categories" class="form-control-label">Categories</label>
-							<input type="text" name="categories" placeholder="Enter categories name" class="form-control" required value="<?php echo $cat_name ?>">
+							<div class="card-body card-block">
+							   <div class="form-in">
+									<label for="categories" class="form-control-label">Categories</label>
+									<input type="text" name="categories" placeholder="Enter categories name" class="form-control" required value="<?php echo $cat_name ?>">
+								</div>
+							   <button id="payment-button" name="submit" type="submit" class="btn btn-lg btn-info btn-block ">
+							        <span id="payment-button-amount">Submit</span>
+							   </button>
+							   <div class="field_error"><?php  echo $msg?></div>
 							</div>
-						   	<button id="payment-button" name="submit" type="submit" class="btn btn-lg btn-info btn-block ">
-						   		<span id="payment-button-amount">Submit</span>
-							 </button>
-						<div class="field_error"><?php  echo $msg?></div>
-					</div>
-				</form>			
+						</form>
                      </div>
                   </div>
                </div>
