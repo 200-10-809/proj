@@ -1,0 +1,74 @@
+/* Account Page */
+
+.btn{
+    height: 50px;
+    width: 25%;
+    outline: none;
+    border: none;
+    color: white;
+    background: #212529;
+    border-radius: 50px;
+    transition: all 0.4s;
+}
+.btn:hover{
+    background-color: black;
+}
+.account-page{
+    padding: 50px 0;
+    background-color: #fff;
+    background:url(../image/bg3.jpg);
+    background-size: cover;
+}
+.form-container{
+    border-radius: 10px;
+    background: #fff;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    text-align: center;
+    padding:20px 0;
+    margin:auto;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1) ;
+    overflow: hidden;
+}
+.form-container span{
+    font-weight: bold;
+    padding: 0 10px;
+    color: #000;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+}
+.form-btn{
+    display: inline-block;
+}
+.form-container form{
+    max-width: 300px;
+    padding: 0 20px;
+    position:absolute;
+    top: 130px;
+    transition: transform 1s;
+}
+.lfrom input{
+    border-radius: 10px;
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid rgb(0, 0, 0);
+}
+form .btn{
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+}
+form .btn:focus{
+    outline: none;
+}
+#LoginForm{
+    left: -300px;
+}
+#RegForm{
+    left: 0;
+}

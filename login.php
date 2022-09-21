@@ -1,63 +1,55 @@
 <?php
-require('connection.inc.php');
-require('function.inc.php');
-$msg='';
-if(isset($_POST['submit']))
-{
-   $username=get_safe_value($conn,$_POST['username']);
-   $password=get_safe_value($conn,$_POST['password']);
-   $sql="select * from admin_users where username='$username'and password='$password'";
-   $res=mysqli_query($conn,$sql);
-   $count=mysqli_num_rows($res);
-   if($count>0)
-   {
-      $_SESSION['ADMIN_LOGIN']='yes';
-      $_SESSION['ADMIN_USERNAME']=$username;
-      header('location:index.php');
-      die();
-
-   }else {
-      $msg="Please Enter Valid Details!!";
-   }
-}
-
+require('top.inc.php');
 ?>
-<!doctype html>
-<html class="no-js" lang="">
-   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>Login Page</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="assets/css/style.css">
-   </head>
-   <body class="bg-dark">
-      <div class="sufee-login d-flex align-content-center flex-wrap">
-         <div class="container">
-            <div class="login-content">
-               <div class="login-form mt-150">
-                  <form method="post">
-                     <div class="form-in">
-                        <label>Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Username" required>
-                     </div>
-                     <div class="form-in">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password" required>
-                     </div>
-                     <button type="submit" name="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+<link rel="stylesheet" href="css/login.css">
+<div class="account-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-4">
+			</div>
+			<div class="col-2">
+				<div class="form-container">
+					<div class="form-btn">
+						<span onclick="login()">LOGIN</span>
+						<span onclick="Reg()">REGISTER</span>
+					</div>
+					<form  id="LoginForm" class="lfrom">
+						<input type="text" placeholder="Enter Email">
+						<input type="password" placeholder="Enter Password">
+						<button type="submit" class="btn">Login</button>
 					</form>
-					<div class="field_error"><?php  echo $msg?></div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <script src="assets/js/bootstrap.min.js"></script>
-      <script src="assets/js/jquery-3.6.0.min.js" type="text/javascript"></script>
-      <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-      <script src="assets/js/plugins.js" type="text/javascript"></script>
-      <script src="assets/js/main.js" type="text/javascript"></script>
-   </body>
-</html>
+
+					<form   id="RegForm"class="lfrom">
+						<input type="text" placeholder="Enter name">
+						<input type="text" placeholder="Enter Email">
+						<input type="text" placeholder="Enter Mobile">
+						<input type="password" placeholder="Enter Password">
+						<button type="submit" class="btn">Register</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+require('footer.inc.php');
+?>
+
+<!-- JS for toggle form -->
+
+<script>
+	var LoginForm =document.getElementById("LoginForm");
+	var RegForm =document.getElementById("RegForm");
+	var Indicator=document.getElementById("Indicator");
+
+	function Reg() {
+		RegForm.style.transform = "translateX(0px)";
+		LoginForm.style.transform = "translateX(0px)";
+		Indicator.style.transform = "translateX(100px)";
+	}
+	function login() {
+		RegForm.style.transform = "translateX(300px)";
+		LoginForm.style.transform = "translateX(300px)";
+		Indicator.style.transform = "translateX(300px)";
+	}
+</script>
